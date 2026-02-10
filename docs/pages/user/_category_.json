@@ -1,0 +1,8 @@
+{
+  "label": "User",
+  "position": 5,
+  "description": "User testing of tickets.",
+  "link": {
+    "type": "generated-index"
+  }
+}

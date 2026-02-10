@@ -1,0 +1,8 @@
+{
+  "label": "Supervisor",
+  "position": 3,
+  "description": "Supervisory workflows within the MES, including monitoring, intervention handling, performance oversight, and shift-level controls.",
+  "link": {
+    "type": "generated-index"
+  }
+}

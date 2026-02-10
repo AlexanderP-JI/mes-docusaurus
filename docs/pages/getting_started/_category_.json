@@ -1,0 +1,8 @@
+{
+  "label": "Getting Started",
+  "position": 1,
+  "description": "Initial access and onboarding for the MES system, including login, device setup, and first-time configuration.",
+  "link": {
+    "type": "generated-index"
+  }
+}

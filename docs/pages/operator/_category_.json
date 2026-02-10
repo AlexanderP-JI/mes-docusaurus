@@ -1,0 +1,8 @@
+{
+  "label": "Operator",
+  "position": 2,
+  "description": "MES functionality for production operators, covering daily execution tasks, process interaction, and basic troubleshooting.",
+  "link": {
+    "type": "generated-index"
+  }
+}

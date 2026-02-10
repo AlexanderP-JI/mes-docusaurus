@@ -1,0 +1,8 @@
+{
+  "label": "Administration",
+  "position": 4,
+  "description": "Administrative configuration of the MES system, including user management, workcenter setup, permissions, and system maintenance.",
+  "link": {
+    "type": "generated-index"
+  }
+}
