@@ -23,19 +23,18 @@ graph TD
     end
 
     subgraph Cluster_C [CIS]
-    P1 & P2 & P3 --> SOL[<b>CIS: Centralisatie & Automatisatie</b>]
-    
+        SOL[<b>CIS: Centralisatie & Automatisatie</b>]
     end
 
+    P1 & P2 & P3 --> SOL
     P4 <--> MES_APP[MES Application]
-
-
 
     style SOL fill:#bbf,stroke:#333,stroke-width:2px
     style P4 fill:#f9f,stroke:#333,stroke-width:2px
    
 
-    ```
+```
+
 ---
 
 ## problem 1: MES Overrule
