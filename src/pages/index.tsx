@@ -89,6 +89,7 @@ export default function MESDocumentationPortal() {
     { label: '24220 - bijlagen in MES (drawings bending, punching purlins, ventilation + punching profile)', url: '/docs/pages/user/DevOps/24220', status: 'approval' },
     { label: '24378 - EN1090 check', url: '/docs/pages/user/DevOps/24378', status: 'approval' },
     
+    { label: 'UAIS', url: '/docs/pages/user/DevOps/UAIS', status: 'prepare' },
 
 
 
