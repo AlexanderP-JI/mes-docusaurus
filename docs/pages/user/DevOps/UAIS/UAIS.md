@@ -45,8 +45,6 @@ graph TD
     SOL[<b>CIS: Centralisatie & Automatisatie</b>]
     
     end
-
-   
     
     subgraph Werkvloer [MES Toegang]
 
@@ -77,7 +75,7 @@ Het CIS wordt aangevuld adhv 2 verschillende bronnen (AD/SSO en CIS zelf). MES h
 #### Doel:
 -	Toegang: Operatoren (SAP CIS) en Supervisors (AD/SSO) probleemloos naast elkaar werken in het MES.
 #### Voorstel:
--	##### Creatie van micro-service met microsoft authenticator waarbij supervisor QR code scant vanop het scherm en zo de overrule accepteert: te bespr met Dennis
+-	##### Creatie van micro-service met microsoft authenticator of fiori app waarbij supervisor QR code scant vanop het scherm en zo de overrule accepteert: te bespr met Dennis
 
 Onderscheid SSO en CIS in DB (te verifieren):
  ![alt text](image.png)
@@ -109,29 +107,58 @@ Operatoren gebruiken hoofdzakelijk MES en hebben SAP als backup. Echter als MES 
 ---
 
 ## probleem 3: onboarding
+
+AS-IS:
 ```mermaid
-graph LR
-    subgraph SAP_Side [SAP ERP]
-        ROLE[Rol: ERP_C_XXXX-XXXX_PROD]
-        ROLE --> PLANT[Plant ID]
-        ROLE --> WORKCENTER[Workcenters/SLocs]
+graph TD
+    HR[HR: Aanwerving => PA20] --> TASK[Taak naar Florian/IT]
+    
+    subgraph Systemen [User Creatie in 15+ Systemen]
+        direction LR
+        S1[AD/Email]
+        S2[SAP PRD/DEV 200&220/QAS/SBX]
+        S3[CIS/Fiori non-prd]
+        S4[MES/MII]
+        S5[BI/Datasphere]
+        S6[Solman/DevOps]
+        S7[RF Settings]
     end
+    
+    TASK --> S1 & S2 & S3 & S4 & S5 & S6 & S7
+    
+    S1 & S2 & S3 & S4 & S5 & S6 & S7 --> AUDIT{Maandelijkse Audit}
+    AUDIT -- "Foutgevoelig" --> MISMATCH[Auditlijst klopt niet]
 
-    subgraph MES_Sync [MES Logica]
-        TABLE1[Table: plant_authorizations]
-        TABLE2[Table: user_sap_role]
+    style MISMATCH fill:#f96,stroke:#333
+```
+
+TO-BE:
+```mermaid
+graph TD
+    HR[HR: Aanwerving => PA20] --> TASK[CIS]
+    
+    HR <--> S1[AD/Email]
+    S1 --> TASK[CIS]
+
+
+    subgraph Systemen [Aut. User creatie]
+        direction LR
         
-        ROLE -- "Pattern Match/Mapping" --> TABLE1
-        TABLE1 --> TABLE2
-        TABLE2 --> MES_RIGHTS[MES Rechten]
+        S2[SAP PRD/DEV 200&220/QAS/SBX]
+        S3[Fiori non-prd]
+        S4[MES/MII]
+        S5[BI/Datasphere]
+        S6[Solman/DevOps]
+        S7[RF Settings]
     end
+    
+    TASK --> S2 & S3 & S4 & S5 & S6 & S7
+    
+     S2 & S3 & S4 & S5 & S6 & S7 --> AUDIT{Maandelijkse Audit}
+    AUDIT -- "overzichtelijk" --> MATCH[Auditlijst OK]
 
-    subgraph Client_Issue [Thin Client]
-        MES_RIGHTS --> CLIENT{Client Setup}
-        CLIENT -- "Verlies van WC" --> COOKIE_ERR[Cookie gewist door sessie switch]
-    end
-
-    style COOKIE_ERR fill:#f96,stroke:#333
+    class MATCH blinkNode
+    style MATCH fill: #00ff00, stroke: #222
 ```
 - Nele zet taken op en HR gebruikt die om personeelsnr aan te maken (taak: maak sap gebruiker aan of referentiegebruiker, mail to, …) => komt dan naar Florian. Altijd een HR taak voor het aanmaken van een gebruiker.
 - Maandelijks audit => wie heeft AD gebruiker en SAP gebruiker? User mag in principe niet gekopieerd worden
@@ -156,28 +183,32 @@ graph LR
 ---
 
 ## probleem 4: User roles sync 
-```mermaid
-graph TD
-    HR[HR: Aanwerving => PA20] --> TASK[Taak naar Florian/IT]
-    
-    subgraph Systemen [User Creatie in 15+ Systemen]
-        direction LR
-        S1[AD/Email]
-        S2[SAP PRD/DEV 200&220/QAS/SBX]
-        S3[CIS/Fiori non-prd]
-        S4[MES/MII]
-        S5[BI/Datasphere]
-        S6[Solman/DevOps]
-        S7[RF Settings]
-    end
-    
-    TASK --> S1 & S2 & S3 & S4 & S5 & S6 & S7
-    
-    S1 & S2 & S3 & S4 & S5 & S6 & S7 --> AUDIT{Maandelijkse Audit}
-    AUDIT -- "Foutgevoelig" --> MISMATCH[Auditlijst klopt niet]
 
-    style MISMATCH fill:#f96,stroke:#333
+```mermaid
+graph LR
+    subgraph SAP_Side [SAP ERP]
+        ROLE[Rol: ERP_C_XXXX-XXXX_PROD]
+        ROLE --> PLANT[Plant ID]
+        ROLE --> WORKCENTER[Workcenters/SLocs]
+    end
+
+    subgraph MES_Sync [MES Logica]
+        TABLE1[Table: plant_authorizations]
+        TABLE2[Table: user_sap_role]
+        
+        ROLE -- "Pattern Match/Mapping" --> TABLE1
+        TABLE1 --> TABLE2
+        TABLE2 --> MES_RIGHTS[MES Rechten]
+    end
+
+    subgraph Client_Issue [Thin Client]
+        MES_RIGHTS --> CLIENT{Client Setup}
+        CLIENT -- "Verlies van WC" --> COOKIE_ERR[Cookie gewist door sessie switch]
+    end
+
+    style COOKIE_ERR fill:#f96,stroke:#333
 ```
+
 ERP_C_XXXX-XXXX_PROD_SHFT_SPRV
 - De XXXX-XXXX is voor een algemene user. Rechten worden verder gedefinieerd per groep, plant. Daaronder worden de rollen verder onderverdeeld in workcenters & storage locations.
 - In MES is er een mapping die de SAP rollen naar de rollen van MES connecteert. 

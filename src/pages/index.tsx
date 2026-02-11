@@ -83,6 +83,9 @@ export default function MESDocumentationPortal() {
     { label: '21495 - BALEX MMS add batch of scanned HU to tbl_parameters', url: '/docs/pages/user/DevOps/21495', status: 'done' },
     { label: '21814 - material type check => include material group (P7x cannot scan laminate on coilpos', url: '/docs/pages/user/DevOps/21814', status: 'done' },
     { label: '23015 - MESSAGE TRACING: multiple HU in 1 confirmation not searchable using header', url: '/docs/pages/user/DevOps/23015', status: 'backlog' },
+    { label: '23095 - Set up test case in QAS for M032', url: '/docs/pages/user/DevOps/23095', status: 'new' },
+    
+
     { label: '23698 - EN1090 label altijd tonen, ongeacht actieve check of niet', url: '/docs/pages/user/DevOps/23698', status: 'done' },
     { label: '23867 - Rollout P010 M033 (virtual profiles) rail machine', url: '/docs/pages/user/DevOps/23867', status: 'approval' },
     { label: '23959 - PROFILES= automatisch confirmatie', url: '/docs/pages/user/DevOps/23959', status: 'approval' },
