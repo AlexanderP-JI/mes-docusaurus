@@ -135,10 +135,10 @@ graph TD
 TO-BE:
 ```mermaid
 graph TD
-    HR[HR: Aanwerving => PA20] --> TASK[CIS]
+    HR[HR: Aanwerving => PA20] <--> TASK[CIS]
     
     HR <--> S1[AD/Email]
-    S1 --> TASK[CIS]
+    S1 <--> TASK[CIS]
 
 
     subgraph Systemen [Aut. User creatie]
@@ -163,6 +163,7 @@ graph TD
 - Nele zet taken op en HR gebruikt die om personeelsnr aan te maken (taak: maak sap gebruiker aan of referentiegebruiker, mail to, …) => komt dan naar Florian. Altijd een HR taak voor het aanmaken van een gebruiker.
 - Maandelijks audit => wie heeft AD gebruiker en SAP gebruiker? User mag in principe niet gekopieerd worden
 - Werkt vrij goed maaar auditlijst klopt niet altijd => bvb: fiori gebruiker aangemaakt voor mensen uit dienst => nagaan bij jelle als ergens een mass create gebeurd is. 
+- te bekijken: kan printer (SAP/AD/Bartender) mee opgenomen worden?
 
 => 	Zie PA20:
 - systemen: MES - SAP prd - FIORI (CIS) -	BI - Solman - MII - AD - RF setting - Email - Sap dev (200 & 220) -	Sap qas - Sbx (sandbox sap) - Fiori non-prd - Datasphere
@@ -171,6 +172,9 @@ graph TD
 #### Problematiek:
 -	User management is heel tijdrovend (+-15 verschillende systemen) => mogelijkheid tot centralizeren?
 -	Soms onduidelijkheid bij nieuwe gebruikers, komt vooral voor wanneer men afwijkt van de normale procedure.
+-   Users krijgen soms in verschillende systemen een andere username. Probleem dat dan alles moet opnieuw ingesteld worden, soms zelf nieuwe AD user, wat heel wat werk is.
+- Bij een rollout krijgen gebruikers soms al een AD user alvorens deze plant in SAP HR beschikbaar is, dat zou ook behouden moeten blijven.
+- In SAP zijn de rollen en aanmaak van gebruikers vrij goed uitgewerkt, best om van hier uit te vertrekken
 
 #### Doel:
 -	Het realiseren van een betrouwbaar, gestandaardiseerd proces. 

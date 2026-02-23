@@ -68,22 +68,22 @@ export default function MESDocumentationPortal() {
 
   const testItems = [
     { label: '11198 - put pack on location in MES', url: '/docs/pages/user/DevOps/11198', status: 'approval' },
-    { label: '13908 - max PACK weight niet toepassen', url: '/docs/pages/user/DevOps/13908', status: 'done' },
+    { label: '13908 - max PACK weight niet toepassen', url: '/docs/pages/user/DevOps/13908', status: 'rfd' },
     { label: '14698 - Business monitor expand action types', url: '/docs/pages/user/DevOps/14698', status: 'backlog' },
     { label: '15982 - Rollout P010 Bending >1.5mm M097+M135+M011+M482+M484+M485+M415', url: '/docs/pages/user/DevOps/15982', status: 'approval' },
     { label: '15989 - Rollout P010 Accessoires  (M035)+M036+MAHO+MAHS', url: '/docs/pages/user/DevOps/15989', status: 'approval' },
-    { label: '17534 - message tracing: Workcenter 1105 ?', url: '/docs/pages/user/DevOps/17534', status: 'backlog' },
+    { label: '17534 - message tracing: Workcenter 1105 ?', url: '/docs/pages/user/DevOps/17534', status: 'rfd' },
     { label: '17649 - BUSINESS MONITOR: PACK WEIGHT EXCEEDED rounding error', url: '/docs/pages/user/DevOps/17649', status: 'new' },
     { label: '18589 - PROFILES= automatisch confirmatie', url: '/docs/pages/user/DevOps/18589', status: 'approval' },
     { label: '20260 - CO 54585465 changed WC => failed', url: '/docs/pages/user/DevOps/20260', status: 'prepare' },
-    { label: '20335 - REJECTS kan geen categorie wissen als type leeg is', url: '/docs/pages/user/DevOps/20335', status: 'backlog' },
+    { label: '20335 - REJECTS kan geen categorie wissen als type leeg is', url: '/docs/pages/user/DevOps/20335', status: 'rfd' },
     
     
     { label: '20454 - REJECTS MONITOR: add searchfield Combined Order', url: '/docs/pages/user/DevOps/20454', status: 'done' },
     { label: '21495 - BALEX MMS add batch of scanned HU to tbl_parameters', url: '/docs/pages/user/DevOps/21495', status: 'done' },
     { label: '21814 - material type check => include material group (P7x cannot scan laminate on coilpos', url: '/docs/pages/user/DevOps/21814', status: 'done' },
     { label: '23015 - MESSAGE TRACING: multiple HU in 1 confirmation not searchable using header', url: '/docs/pages/user/DevOps/23015', status: 'backlog' },
-    { label: '23095 - Set up test case in QAS for M032', url: '/docs/pages/user/DevOps/23095', status: 'new' },
+    { label: '23095 - Set up test case in QAS for M032', url: '/docs/pages/user/DevOps/23095', status: 'done' },
     
 
     { label: '23698 - EN1090 label altijd tonen, ongeacht actieve check of niet', url: '/docs/pages/user/DevOps/23698', status: 'done' },
@@ -92,12 +92,14 @@ export default function MESDocumentationPortal() {
     { label: '24220 - bijlagen in MES (drawings bending, punching purlins, ventilation + punching profile)', url: '/docs/pages/user/DevOps/24220', status: 'approval' },
     { label: '24378 - EN1090 check', url: '/docs/pages/user/DevOps/24378', status: 'approval' },
     
-    { label: 'UAIS', url: '/docs/pages/user/DevOps/UAIS', status: 'prepare' },
+    { label: 'UAIS', url: '/docs/pages/user/DevOps/UAIS', status: 'projects' },
+    { label: 'MII-MES', url: '/docs/pages/user/DevOps/MII-MES', status: 'projects' },
+    { label: 'Go-lives', url: '/docs/pages/user/DevOps/go-lives', status: 'projects' },
 
 
-
-     
-    
+    { label: 'orders uit confirmed', url: '/docs/pages/user/Queries/orders uit confirmed', status: 'query' },
+    { label: 'plants per user role', url: '/docs/pages/user/Queries/plants per user role', status: 'query' },
+    { label: 'Workcenter_config copy to new W', url: '/docs/pages/user/Queries/Workcenter_config copy to new WC', status: 'query' }
      
 
 
@@ -153,11 +155,32 @@ export default function MESDocumentationPortal() {
             items={testItems.filter(item => item.status === 'backlog')} 
           />
 
-          {/* Kolom 5: Afgerond */}
+          {/* Kolom 5: Ready for Development */}
+          <CategoryCard 
+            title="RFD" 
+            icon="🚀" 
+            items={testItems.filter(item => item.status === 'rfd')} 
+          />
+
+          {/* Kolom 6: Afgerond */}
           <CategoryCard 
             title="Done" 
             icon="✅" 
             items={testItems.filter(item => item.status === 'done')} 
+          />
+
+          {/* Kolom 7: Projecten/Rollout Plan */}
+          <CategoryCard 
+            title="Projects" 
+            icon="🗺️" 
+            items={testItems.filter(item => item.status === 'projects')} 
+          />
+
+          {/* Kolom 8: SQL Queries / Troubleshooting */}
+          <CategoryCard 
+            title="Queries" 
+            icon="🗄️" 
+            items={testItems.filter(item => item.status === 'query' || item.status === 'testing')} 
           />
         </div>
 
