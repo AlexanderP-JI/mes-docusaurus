@@ -95,7 +95,7 @@ export default function MESDocumentationPortal() {
     { label: 'UAIS', url: '/docs/pages/user/DevOps/UAIS', status: 'projects' },
     { label: 'MII-MES', url: '/docs/pages/user/DevOps/MII-MES', status: 'projects' },
     { label: 'Go-lives', url: '/docs/pages/user/DevOps/go-lives', status: 'projects' },
-
+    { label: 'MES-SSO', url: '/docs/MD_mes-sso-operator-override/sso-supervisor-plan', status: 'projects' },
 
     { label: 'orders uit confirmed', url: '/docs/pages/user/Queries/orders uit confirmed', status: 'query' },
     { label: 'plants per user role', url: '/docs/pages/user/Queries/plants per user role', status: 'query' },

@@ -251,6 +251,32 @@ Onder deze subrollen zijn de storage locations, werkcenters en plants gekoppeld:
 -	Sync/interface issues
 ##### Nick: oplijsten: hoe vaak gebeuren hier fouten of vergetelijkheden? 
 
+---
+## Overzicht issues 
+
+<div style={{ minWidth: '1800px', marginLeft: '-300px', overflowX: 'auto' }}>
+| Issue Categorie | Omschrijving Probleem | Voorgestelde Oplossing | Status | Workload / Type | Timing / Status | ticket? |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **1. MES Overrule** | Cookie clash bij overrule | QR voor SPVR / PIN oper + | 🟡 In Progress | Hoog (MES + Dennis) + infra: mobiel voorzien | **Q3/2026** | |
+| **2. User Data** | Foutieve/vergeten rollen | CIS: CIS_C_XXXX_XXXX_PIN onder PROD_WORKER & SHFT_SPRV | 🟡 In Progress | Laag (Dennis/Jelle) | Q2/2026 |  Solman: 4000154362 |
+| **3. User Data** | Foutieve talen | CIS: taal openzetten voor business | 🟡 In Progress | Laag (Dennis/Jelle) | Q2/2026 | Solman: 4000154362 |
+| **4. User Data** | fictieve emails => issue voor pas reset | CIS: SPRV in CIS voor pas reset, extra controles? | 🟡 In Progress | Laag (Annelore) | Q2/2026 | Solman: 4000154363 |
+| **5. Onboarding** | fragmented systems | Centralisatie user management (CIS?) => overleg (auth/infra/mes/tech/hr/...)  | ⚪ Scheduled | Hoog (Dennis/Jelle) | **Q4/2026** | Solman: 4000154366 |
+| **6. Account Lock** | Geen sync last login CIS/SAP | CIS login als last login (op te lossen via 5.) | ⚪ Scheduled | Hoog (Dennis/Jelle) | **Q4/2026** | |
+| **7. Foutmeldingen** | Onduidelijke teksten bij login (opvangen in MES) | bug fix + opgelost met 1.? te testen => CI error | 🟡 In Progress | Alexander | **Q3/2026** | |
+| **8. PIN Code** | PIN wordt niet begrepen | deactiveren (niet veilig, geen meerwaarde) => ww reset moet in fiori/CIS => PIN rol in CIS?| ⚪ Scheduled| Alexander | **Q3/2026** | |
+| **8. Toegang CIS** | 238 mensen kunnen in Fiori | Toegang beperken wie in CIS kan, enkel SPRV met AD email | ⚪ Scheduled| Alexander | **Q2/2026** | |
+</div>
+
+6.:
+is er een linkt de de PIN rol in CIS? heeft IT daar impact op? PIN is nu meestal 123456 of wordt vergeten, dus weinig meerwaarde.
+
+7.:
+![alt text](image-7.png)
+
+
+
+
 
 export const PrintButton = () => (
   <button 

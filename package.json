@@ -5,14 +5,16 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "slidev build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "dev": "slidev --open",
+    "export": "slidev export"
   },
   "dependencies": {
     "@cmfcmf/docusaurus-search-local": "^2.0.1",
@@ -20,6 +22,7 @@
     "@docusaurus/preset-classic": "3.9.2",
     "@docusaurus/theme-mermaid": "^3.9.2",
     "@mdx-js/react": "^3.0.0",
+    "@svgr/plugin-jsx": "^8.1.0",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
